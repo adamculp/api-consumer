@@ -1,6 +1,19 @@
 <?php
 namespace ApiConsumer\classes\ApiConsumerClass;
 
+/**
+ * Simple class that allows easy creation of a GET url string to be passed via
+ * Curl. The class currently assumes a JSON return which will be parsed to an array
+ * and returned.
+ * 
+ * Perhaps in the future I will add in POST capabilities as well as XML parsing
+ * and maybe even more Curl capabilities, or add additional classes to do this.
+ * 
+ * @author Adam Culp http://www.geekyboy.com
+ * @version 0.1
+ * @license MIT
+ * 
+ */
 class ApiConsumerClass
 {
     /**
@@ -24,15 +37,17 @@ class ApiConsumerClass
     private $responseType;
 
     /**
-     * @param $variables
+     * 
      */
-    public function __construct($variables)
+    public function __construct()
     {
         $this->params = array();
     }
 
     /**
-     *  Resets all variables to prepare for fresh object creation
+     * Resets all variables to prepare for fresh object creation if needed for
+     * looping.
+     * 
      */
     public function reset()
     {
@@ -55,6 +70,8 @@ class ApiConsumerClass
     }
 
     /**
+     * This function is strictly forward thinking
+     * 
      * @param string $callType
      */
     public function setCallType($callType = 'get')
@@ -64,6 +81,8 @@ class ApiConsumerClass
     }
 
     /**
+     * This function is strictly forward thinking
+     * 
      * @param string $responseType
      */
     public function setResponseType($responseType = 'json')
@@ -84,15 +103,38 @@ class ApiConsumerClass
     }
 
     /**
+     * @return array
+     */
+    public function doApiCall()
+    {
+        $parsedResponse = array();
+        $jsonResponse = false;
+
+        $curlUrl = $this->createCurlUrl();
+
+        if ($curlUrl) {
+            $jsonResponse = $this->submitCurlRequest($curlUrl);
+        }
+
+        if ($jsonResponse) {
+            $parsedResponse = $this->parseJsonResponse($jsonResponse);
+        }
+
+        return $parsedResponse;
+    }
+
+    /**
      * @return string
      */
     private function createCurlUrl()
     {
         $curlUrl = $this->url . '?';
 
-        foreach ($this->params as $key => $value) {
-            $curlUrl .= $key . '=' . $value;
-            $curlUrl .= '&';
+        foreach ($this->params as $param) {
+            foreach ($param as $key => $value) {
+                $curlUrl .= $key . '=' . $value;
+                $curlUrl .= '&';
+            }
         }
 
         return $curlUrl;
@@ -120,7 +162,7 @@ class ApiConsumerClass
      * @param object $jsonResponse
      * @return array
      */
-    public function parseJsonResponse($jsonResponse)
+    private function parseJsonResponse($jsonResponse)
     {
         $parsedJson = json_decode($jsonResponse, true);
 
