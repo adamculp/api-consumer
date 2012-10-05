@@ -19,22 +19,22 @@ class ApiConsumerClass
     /**
      * @var string
      */
-    private $url;
+    public $url;
 
     /**
      * @var array
      */
-    private $params;
+    public $params;
 
     /**
      * @var string
      */
-    private $callType;
+    public $callType;
 
     /**
      * @var string
      */
-    private $responseType;
+    public $responseType;
 
     /**
      * 
@@ -162,7 +162,7 @@ class ApiConsumerClass
      * @param object $jsonResponse
      * @return array
      */
-    private function parseJsonResponse($jsonResponse)
+    public function parseJsonResponse($jsonResponse)
     {
         $parsedJson = json_decode($jsonResponse, true);
 
