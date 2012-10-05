@@ -7,6 +7,10 @@ use ApiConsumer\classes\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
  * Florida with a start date within the next month that meet the query string of
  * "ultra marathon". It will return a result set of 25 records,
  * 
+ * @author Adam Culp http://www.geekyboy.com
+ * @version 0.1
+ * @license MIT
+ * 
  */
 require_once 'ApiConsumer/classes/ApiConsumer.php';
 $apiConsumer = new ApiConsumer();
