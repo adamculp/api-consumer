@@ -92,13 +92,18 @@ class ApiConsumerClass
     }
 
     /**
-     * @param array $param
+     * Expects an array of one or more key=>value pairs of params to later add
+     * to the URL string
+     * 
+     * @param array $params
      */
-    public function setParam($param)
+    public function setParams($params)
     {
         // $param should be a single key => value pair
-        if (is_array($param)) {
-            $this->params[] = $param;
+        if (is_array($params)) {
+            foreach ($params as $key => $param) {
+                $this->params[$key] = $param;
+            }
         }
     }
 
@@ -126,15 +131,13 @@ class ApiConsumerClass
     /**
      * @return string
      */
-    private function createCurlUrl()
+    protected function createCurlUrl()
     {
         $curlUrl = $this->url . '?';
 
-        foreach ($this->params as $param) {
-            foreach ($param as $key => $value) {
-                $curlUrl .= $key . '=' . $value;
-                $curlUrl .= '&';
-            }
+        foreach ($this->params as $key => $value) {
+            $curlUrl .= $key . '=' . $value;
+            $curlUrl .= '&';
         }
 
         return $curlUrl;
@@ -144,7 +147,7 @@ class ApiConsumerClass
      * @param string $curlUrl
      * @return mixed
      */
-    private function submitCurlRequest($curlUrl)
+    protected function submitCurlRequest($curlUrl)
     {
         $session = curl_init();
         curl_setopt($session, CURLOPT_URL, $curlUrl);

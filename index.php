@@ -5,7 +5,7 @@ use ApiConsumer\classes\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
 /**
  * The example below uses the API at Active.com to query "Running" activities in
  * Florida with a start date within the next month that meet the query string of
- * "ultra marathon". It will return a result set of 25 records,
+ * "ultra marathon". It will return a result set of 25 records as set.
  * 
  * @author Adam Culp http://www.geekyboy.com
  * @version 0.1
@@ -16,22 +16,24 @@ require_once 'ApiConsumer/classes/ApiConsumer.php';
 $apiConsumer = new ApiConsumer();
 $url = 'http://api.amp.active.com/search?';
 $meta = 'meta:channel=Running+meta:startDate:daterange:today..' . date('Y-m-d', strtotime('next month'));
+$params = array(
+                'k' => 'ultra+marathon',
+                'v' => 'json',
+                'l' => 'Florida',
+                'r' => '25',
+                's' => 'date_asc',
+                'api_key' => '{Add API Key Here}',
+                'm' => $meta
+            );
+
+$apiConsumer->setParams($params);
 
 $apiConsumer->setResponseType('json');
 $apiConsumer->setCallType('get');
 $apiConsumer->setUrl($url);
 
-$apiConsumer->setParam(array('k' => 'ultra+marathon'));
-$apiConsumer->setParam(array('v' => 'json'));
-$apiConsumer->setParam(array('l' => 'Florida'));
-$apiConsumer->setParam(array('r' => '25'));
-$apiConsumer->setParam(array('m' => $meta));
-$apiConsumer->setParam(array('s' => 'date_asc'));
-$apiConsumer->setParam(array('api_key' => '{api_key_here}'));
-
 $result = $apiConsumer->doApiCall();
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
