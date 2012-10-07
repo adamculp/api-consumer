@@ -2,16 +2,16 @@
 namespace ApiConsumer\classes\ApiConsumerClass;
 
 /**
- * Simple class that allows easy creation of a GET url string to be passed via
- * Curl. The class currently assumes a JSON return which will be parsed to an array
- * and returned.
+ * Simple class/wrapper to allows easy creation of a GET url string to be passed
+ * via Curl. The class currently assumes a JSON return which will be parsed to an
+ * array and returned.
  * 
  * Perhaps in the future I will add in POST capabilities as well as XML parsing
  * and maybe even more Curl capabilities, or add additional classes to do this.
  * 
  * @author Adam Culp http://www.geekyboy.com
  * @version 0.1
- * @license MIT
+ * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  * 
  */
 class ApiConsumerClass

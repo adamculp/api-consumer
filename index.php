@@ -9,7 +9,7 @@ use ApiConsumer\classes\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
  * 
  * @author Adam Culp http://www.geekyboy.com
  * @version 0.1
- * @license MIT
+ * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  * 
  */
 require_once 'ApiConsumer/classes/ApiConsumer.php';
