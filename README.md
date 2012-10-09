@@ -1,8 +1,56 @@
-api-consumer
-============
+About
+-----
 
-PHP class to build API params, connection url, and expected result format (xml, json).
+Simple PHP 5.3 class/wrapper to consume an API through GET using Curl. (created to consume some Mashery APIs, but could be used for others) Methods build API URL params, connection url, and parse expected JSON response.
 
-I am not 100% certain what will come of this repo, but at first I want to at least add an API consuming class I use to connect to various API's created by a few different providers.
+In the future I intend to add the possibility of an XML return as well, and may even break out the limited Curl functionality to another class.
 
-At some future point I will also need to include some sort of Curl class, and possibly another class to parse XML and/or JSON results to an array for easier usage.  However, I will create the initial class to expect JSON results from the API and parse it to an array for consumption.
+Requirements
+------------
+
+Requires PHP version 5.3+ if namespaces are desired.
+
+Installation
+------------
+
+This class can be used directly from a GIT clone:
+
+    git clone https://github.com/adamculp/api-consumer.git
+
+You could also download the ApiConsumer package and move the directory to a desired location where your scripts can then call it.  Alternatively you could simply copy the ApiConsumer.php file to a desired location and call it that way as well.
+
+Usage
+-----
+
+This class was written using namespaces available via PHP 5.3+, and if left unchanged would be used in the following manner:
+NOTE: This class contains information needed to utilize a certain Mashery API at Active.com, but you can change the URL and params as needed for other APIs that return JSON.
+
+    use ApiConsumer\classes\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
+    
+    require_once 'path/to/ApiConsumer/classes/ApiConsumer.php';
+    $apiConsumer = new ApiConsumer();
+    $url = 'http://api.amp.active.com/search?';
+    
+    $apiConsumer->setUrl($url);
+    
+    $meta = 'meta:channel=Running+meta:startDate:daterange:today..' . date('Y-m-d', strtotime('next month'));
+    $params = array(
+                    'k' => 'ultra+marathon',
+                    'v' => 'json',
+                    'l' => 'Florida',
+                    'r' => '25',
+                    's' => 'date_asc',
+                    'api_key' => '{Add API Key Here}',
+                    'm' => $meta
+                );
+    
+    $apiConsumer->setParams($params);
+    
+    $apiConsumer->setResponseType('json');
+    $apiConsumer->setCallType('get');
+    
+    $result = $apiConsumer->doApiCall();
+
+From there you can use the $result array as you see fit.
+
+Please use the index.php as a working example (minus the API key) of how the class can be included and used.
