@@ -1,5 +1,5 @@
 {
-    "name": "api-consumer/api-consumer",
+    "name": "adamculp/api-consumer",
     "type": "library",
     "description": "A basic API wrapper class.",
     "keywords": ["api","wrapper"],
