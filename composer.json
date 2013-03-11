@@ -7,7 +7,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Adam Culp",
+           "name": "Adam Culp",
             "email": "adamculp@uws.net",
             "homepage": "http://geekyboy.com",
             "role": "Developer"
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-0": {
-            "ApiConsumer": "src"
+            "ApiConsumer": "classes/"
         }
     }
 }
