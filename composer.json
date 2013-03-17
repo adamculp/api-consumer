@@ -1,5 +1,5 @@
 {
-    "name": "aculp/api-consumer",
+    "name": "adamculp/api-consumer",
     "description": "Basic API wrapper for dealing with Mashery and other GET based APIs.",
     "license": "MIT",
     "authors": [
