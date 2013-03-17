@@ -1,6 +1,6 @@
 <?php
-
-use ApiConsumer\classes\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
+require_once 'src/ApiConsumer/ApiConsumer.php';
+use ApiConsumer\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
 
 /**
  * The example below uses the API at Active.com to query "Running" activities in
@@ -12,7 +12,7 @@ use ApiConsumer\classes\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  * 
  */
-require_once 'ApiConsumer/classes/ApiConsumer.php';
+
 $apiConsumer = new ApiConsumer();
 $url = 'http://api.amp.active.com/search?';
 $meta = 'meta:channel=Running+meta:startDate:daterange:today..' . date('Y-m-d', strtotime('next month'));
@@ -26,7 +26,15 @@ $params = array(
                 'm' => $meta
             );
 
+$options = array(
+                CURLOPT_HEADER => 0,
+                CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_PORT => 8080
+            );
+
 $apiConsumer->setParams($params);
+
+$apiConsumer->setOptions($options);
 
 $apiConsumer->setResponseType('json');
 $apiConsumer->setCallType('get');

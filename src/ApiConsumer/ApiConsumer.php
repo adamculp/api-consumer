@@ -1,5 +1,5 @@
 <?php
-namespace ApiConsumer\classes\ApiConsumerClass;
+namespace ApiConsumer\ApiConsumerClass;
 
 /**
  * Simple class/wrapper to allows easy creation of a GET url string to be passed
