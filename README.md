@@ -43,8 +43,12 @@ NOTE: This class contains information needed to utilize a certain Mashery API at
                     'api_key' => '{Add API Key Here}',
                     'm' => $meta
                 );
+                
+    $options = array(); // key=>value pairs can be added here to alter the curl call
     
     $apiConsumer->setParams($params);
+    
+    $apiConsumer->setOptions($options);
     
     $apiConsumer->setResponseType('json');
     $apiConsumer->setCallType('get');

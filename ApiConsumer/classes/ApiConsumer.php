@@ -10,7 +10,7 @@ namespace ApiConsumer\classes\ApiConsumerClass;
  * and maybe even more Curl capabilities, or add additional classes to do this.
  * 
  * @author Adam Culp http://www.geekyboy.com
- * @version 0.1
+ * @version 0.2
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  * 
  */
@@ -25,6 +25,11 @@ class ApiConsumerClass
      * @var array
      */
     public $params;
+
+    /**
+     * @var array
+     */
+    public $options;
 
     /**
      * @var string
@@ -42,6 +47,7 @@ class ApiConsumerClass
     public function __construct()
     {
         $this->params = array();
+        $this->options = array();
     }
 
     /**
@@ -54,12 +60,13 @@ class ApiConsumerClass
         // clears the object entirely
         $this->url = null;
         $this->params = array();
+        $this->options = array();
         $this->callType = null;
         $this->responseType = null;
     }
 
     /**
-     * String to be used for GET call
+     * String to be used as the base URL for a GET call.
      * 
      * @param string $url
      */
@@ -70,7 +77,8 @@ class ApiConsumerClass
     }
 
     /**
-     * This function is strictly forward thinking
+     * This function is strictly forward thinking in case I ever allow other request
+     * types using curl_setopt($ch, CURLOPT_CUSTOMREQUEST, '???').
      * 
      * @param string $callType
      */
@@ -81,7 +89,8 @@ class ApiConsumerClass
     }
 
     /**
-     * This function is strictly forward thinking
+     * This function is strictly forward thinking in case I ever create additional
+     * parsers.
      * 
      * @param string $responseType
      */
@@ -108,6 +117,31 @@ class ApiConsumerClass
     }
 
     /**
+     * Expects an array of one or more key=>value pairs of params to later use
+     * as options with curl to alter the way curl is used.
+     * 
+     * To view a list of potential curl options see: http://php.net/manual/en/function.curl-setopt.php
+     * 
+     * NOTE: The curl option($key) should not be passed as a string.
+     * 
+     * @param array $options
+     */
+    public function setOptions($options)
+    {
+        // $param should be a single key => value pair
+        if (is_array($options)) {
+            foreach ($options as $key => $option) {
+                $this->options[$key] = $option;
+            }
+        }
+    }
+
+    /**
+     * This is a wrapper to execute the entire process of an API call. It initiates
+     * the creation of the URL, and using the returned URL it initiates the curl
+     * request, and the resulting JSON is then sent to the parser.  The end result
+     * is a usable array.
+     * 
      * @return array
      */
     public function doApiCall()
@@ -116,7 +150,7 @@ class ApiConsumerClass
         $jsonResponse = false;
 
         $curlUrl = $this->createCurlUrl();
-
+        
         if ($curlUrl) {
             $jsonResponse = $this->submitCurlRequest($curlUrl);
         }
@@ -129,6 +163,8 @@ class ApiConsumerClass
     }
 
     /**
+     * Create the URL string, complete with any params.
+     * 
      * @return string
      */
     protected function createCurlUrl()
@@ -144,16 +180,26 @@ class ApiConsumerClass
     }
 
     /**
+     * Build the curl resource and execute it, to return the raw result.
+     * 
      * @param string $curlUrl
      * @return mixed
      */
     protected function submitCurlRequest($curlUrl)
     {
         $session = curl_init();
+        
         curl_setopt($session, CURLOPT_URL, $curlUrl);
         curl_setopt($session, CURLOPT_HEADER, 0);
         curl_setopt($session, CURLOPT_RETURNTRANSFER, 1);
-
+        
+        // @todo this is not working as expected
+        //if (!empty($this->options)) {
+        //    foreach ($this->options as $key => $value) {
+        //        curl_setopt($session, $key, $value);
+        //    }
+        //}
+        
         $rawResponse = curl_exec($session);
 
         curl_close($session);
@@ -162,6 +208,8 @@ class ApiConsumerClass
     }
 
     /**
+     * Parse a JSON response and return as array.
+     * 
      * @param object $jsonResponse
      * @return array
      */
