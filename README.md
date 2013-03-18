@@ -19,8 +19,8 @@ This class can be used directly from a GIT clone:
 
 You could also download the ApiConsumer package and move the directory to a desired location where your scripts can then call it.  Alternatively you could simply copy the ApiConsumer.php file to a desired location and call it that way as well.
 
-Usage
------
+Non-Composer Usage
+------------------
 
 This class was written using namespaces available via PHP 5.3+, and if left unchanged would be used in the following manner:
 NOTE: This class contains information needed to utilize a certain Mashery API at Active.com, but you can change the URL and params as needed for other APIs that return JSON.
@@ -55,6 +55,14 @@ NOTE: This class contains information needed to utilize a certain Mashery API at
     
     $result = $apiConsumer->doApiCall();
 
+Composer Usage
+------------------
+
+If using Composer you really only need to alter the require to point to the Composer autoloader instead of the class itself.
+
+    require_once 'vendor/autoload.php'; // to include the composer autoloader
+
+
 From there you can use the $result array as you see fit.
 
-Please use the index.php as a working example (minus the API key) of how the class can be included and used.
+Please use the /api-consumer/index.php as a working example (minus the API key) of how the class can be included and used.
