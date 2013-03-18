@@ -1,6 +1,6 @@
 <?php
-require_once 'src/ApiConsumer/ApiConsumer.php';
-use ApiConsumer\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
+require_once 'src/ApiConsumer/Consumer.php';
+use ApiConsumer\Consumer;
 
 /**
  * The example below uses the API at Active.com to query "Running" activities in
@@ -13,7 +13,7 @@ use ApiConsumer\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
  * 
  */
 
-$apiConsumer = new ApiConsumer();
+$apiConsumer = new Consumer();
 $url = 'http://api.amp.active.com/search?';
 $meta = 'meta:channel=Running+meta:startDate:daterange:today..' . date('Y-m-d', strtotime('next month'));
 $params = array(

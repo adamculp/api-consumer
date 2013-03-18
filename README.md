@@ -25,10 +25,10 @@ Usage
 This class was written using namespaces available via PHP 5.3+, and if left unchanged would be used in the following manner:
 NOTE: This class contains information needed to utilize a certain Mashery API at Active.com, but you can change the URL and params as needed for other APIs that return JSON.
 
-    require_once 'path/to/src/ApiConsumer/ApiConsumer.php';
-    use ApiConsumer\ApiConsumerClass\ApiConsumerClass as ApiConsumer;
+    require_once 'path/to/src/ApiConsumer/Consumer.php';
+    use ApiConsumer\Consumer;
     
-    $apiConsumer = new ApiConsumer();
+    $apiConsumer = new Consumer();
     $url = 'http://api.amp.active.com/search?';
     
     $apiConsumer->setUrl($url);

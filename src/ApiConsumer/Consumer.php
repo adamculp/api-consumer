@@ -1,5 +1,5 @@
 <?php
-namespace ApiConsumer\ApiConsumerClass;
+namespace ApiConsumer;
 
 /**
  * Simple class/wrapper to allows easy creation of a GET url string to be passed
@@ -14,7 +14,7 @@ namespace ApiConsumer\ApiConsumerClass;
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  * 
  */
-class ApiConsumerClass
+class Consumer
 {
     /**
      * @var string
