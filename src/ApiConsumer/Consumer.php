@@ -10,7 +10,7 @@ namespace ApiConsumer;
  * and maybe even more Curl capabilities, or add additional classes to do this.
  * 
  * @author Adam Culp http://www.geekyboy.com
- * @version 0.2
+ * @version 0.4
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  * 
  */
