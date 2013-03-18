@@ -58,7 +58,15 @@ NOTE: This class contains information needed to utilize a certain Mashery API at
 Composer Usage
 ------------------
 
-If using Composer you really only need to alter the require to point to the Composer autoloader instead of the class itself.
+After either installing Composer using one of the two methods shown at http://getcomposer.org the composer.json would look like:
+
+    {
+        "require": {
+            "adamculp/api-consumer": "dev-master"
+        }
+    }
+
+Then you'll need to alter the require_once in the sample above to point to the Composer autoload instead of to the class itself.
 
     require_once 'vendor/autoload.php'; // to include the composer autoloader
 
