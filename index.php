@@ -1,5 +1,6 @@
 <?php
 require_once 'src/ApiConsumer/Consumer.php';
+//require_once 'vendor/autoload.php'; // if using Composer autoloader and psr-0
 use ApiConsumer\Consumer;
 
 /**
@@ -8,9 +9,6 @@ use ApiConsumer\Consumer;
  * "ultra marathon". It will return a result set of 25 records as set.
  * 
  * @author Adam Culp http://www.geekyboy.com
- * @version 0.1
- * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
- * 
  */
 
 $apiConsumer = new Consumer();
