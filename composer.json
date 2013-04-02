@@ -1,6 +1,7 @@
 {
     "name": "adamculp/api-consumer",
     "description": "Basic API wrapper for dealing with Mashery and other GET based APIs.",
+    "keywords": ["api","wrapper","api wrapper","mashery api"],
     "license": "MIT",
     "authors": [
         {
