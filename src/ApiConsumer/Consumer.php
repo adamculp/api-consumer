@@ -193,11 +193,11 @@ class Consumer
         curl_setopt($session, CURLOPT_RETURNTRANSFER, 1);
         
         // @todo this is not working as expected
-        //if (!empty($this->options)) {
-        //    foreach ($this->options as $key => $value) {
-        //        curl_setopt($session, $key, $value);
-        //    }
-        //}
+        if (!empty($this->options)) {
+            foreach ($this->options as $key => $value) {
+                curl_setopt($session, $key, $value);
+            }
+        }
         
         $rawResponse = curl_exec($session);
 
