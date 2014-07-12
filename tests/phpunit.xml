@@ -1,7 +1,7 @@
 <phpunit backupGlobals="true" bootstrap="./bootstrap.php">
 	<filter>
 		<blacklist>
-			<directory>../vendor</directory>
+			<directory>/vendor</directory>
 		</blacklist>
 	</filter>
 	<testsuite>
