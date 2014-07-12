@@ -126,6 +126,16 @@ class Consumer
     }
 
     /**
+     * Allow retrieval of params array for testing.
+     * 
+     * @return array
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
      * Expects an array of one or more key=>value pairs of params to later use
      * as options with curl to alter the way curl is used.
      * 
