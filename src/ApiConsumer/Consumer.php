@@ -76,6 +76,16 @@ class Consumer
     }
 
     /**
+     * Allow retrieval of URL for testing.
+     * 
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
      * This function is strictly forward thinking in case I ever allow other request
      * types using curl_setopt($ch, CURLOPT_CUSTOMREQUEST, '???').
      * 
