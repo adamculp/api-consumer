@@ -98,6 +98,16 @@ class Consumer
     }
 
     /**
+     * Allow retrieval of CallType string for testing.
+     *
+     * @return string
+     */
+    public function getCallType()
+    {
+        return $this->callType;
+    }
+
+    /**
      * This function is strictly forward thinking in case I ever create additional
      * parsers.
      * 
