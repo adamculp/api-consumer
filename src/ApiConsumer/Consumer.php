@@ -120,6 +120,16 @@ class Consumer
     }
 
     /**
+     * Allow retrieval of params array for testing.
+     *
+     * @return string
+     */
+    public function getResponseType()
+    {
+        return $this->responseType;
+    }
+    
+    /**
      * Expects an array of one or more key=>value pairs of params to later add
      * to the URL string
      * 
