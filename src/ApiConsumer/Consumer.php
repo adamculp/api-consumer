@@ -176,6 +176,16 @@ class Consumer
     }
 
     /**
+     * Allow retrieval of options array for testing.
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
      * This is a wrapper to execute the entire process of an API call. It initiates
      * the creation of the URL, and using the returned URL it initiates the curl
      * request, and the resulting JSON is then sent to the parser.  The end result
