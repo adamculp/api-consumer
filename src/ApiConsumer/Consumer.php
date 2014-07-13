@@ -168,7 +168,7 @@ class Consumer
         $parsedResponse = array();
         $jsonResponse = false;
 
-        $curlUrl = $this->createCurlUrl();
+        $curlUrl = $this->createUrl();
         
         if ($curlUrl) {
             $jsonResponse = $this->submitCurlRequest($curlUrl);
@@ -186,7 +186,7 @@ class Consumer
      * 
      * @return string
      */
-    protected function createCurlUrl()
+    public function createUrl()
     {
         $curlUrl = $this->url . '?';
 
