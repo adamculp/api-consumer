@@ -17,7 +17,18 @@ class ConsumerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('http://uws.net', $result);
     }
-    
+
+    public function testSetAndGetCallType()
+    {
+        $consumer = new Consumer();
+
+        $consumer->setCallType('post');
+
+        $result = $consumer->getCallType();
+
+        $this->assertEquals('post', $result);
+    }
+
     public function testSetAndGetParams()
     {
         $consumer = new Consumer();
