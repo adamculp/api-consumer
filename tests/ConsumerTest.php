@@ -29,6 +29,17 @@ class ConsumerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('post', $result);
     }
 
+    public function testSetAndGetResponseType()
+    {
+        $consumer = new Consumer();
+
+        $consumer->setResponseType('xml');
+
+        $result = $consumer->getResponseType();
+
+        $this->assertEquals('xml', $result);
+    }
+    
     public function testSetAndGetParams()
     {
         $consumer = new Consumer();
