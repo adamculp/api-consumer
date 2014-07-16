@@ -55,4 +55,20 @@ class ConsumerTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($value, $result[$key]);
         }
     }
+
+    public function testSetAndGetOptions()
+    {
+        $consumer = new Consumer();
+
+        $testOptions = array('k' => 'ultra+marathon','v' => 'json','l' => 'Florida');
+
+        $consumer->setOptions($testOptions);
+
+        $result = $consumer->getOptions();
+
+        foreach ($testOptions as $key => $value) {
+            $this->assertArrayHasKey($key, $result);
+            $this->assertEquals($value, $result[$key]);
+        }
+    }
 }
