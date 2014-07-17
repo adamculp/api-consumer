@@ -71,4 +71,22 @@ class ConsumerTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($value, $result[$key]);
         }
     }
+    
+    public function testJsonParser()
+    {
+        $consumer = new Consumer();
+
+        $testArray = array('k' => 'ultra+marathon','v' => 'json','l' => 'Florida');
+        
+        $json = json_encode($testArray);
+        
+        $this->assertJson($json);
+        
+        $result = $consumer->parseJsonResponse($json);
+        
+        foreach ($testArray as $key => $value) {
+            $this->assertArrayHasKey($key, $result);
+            $this->assertEquals($value, $result[$key]);
+        }
+    }
 }
