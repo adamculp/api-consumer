@@ -89,4 +89,21 @@ class ConsumerTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($value, $result[$key]);
         }
     }
+    
+    public function testCreateUrl()
+    {
+        $consumer = new Consumer();
+        $testParams = array('k' => 'ultra+marathon','v' => 'json','l' => 'Florida');
+        
+        $consumer->setUrl('http://uws.net');
+        
+        $consumer->setParams($testParams);
+        
+        $url = $consumer->createUrl();
+        
+        $this->assertContains('http://uws.net', $url);
+        $this->assertContains('ultra+marathon',$url);
+        $this->assertContains('json',$url);
+        $this->assertContains('Florida',$url);
+    }
 }
