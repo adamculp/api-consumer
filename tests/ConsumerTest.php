@@ -106,4 +106,30 @@ class ConsumerTest extends \PHPUnit_Framework_TestCase
         $this->assertContains('json',$url);
         $this->assertContains('Florida',$url);
     }
+    
+    public function testReset()
+    {
+        $consumer = new Consumer();
+        $testParams = array('k' => 'ultra+marathon','v' => 'json','l' => 'Florida');
+
+        $consumer->setUrl('http://uws.net');
+        $consumer->setParams($testParams);
+        $consumer->setOptions($testParams);
+        $consumer->setCallType('post');
+        $consumer->setResponseType('xml');
+        
+        $this->assertEquals($consumer->getUrl(), 'http://uws.net');
+        $this->assertEquals($consumer->getParams(), $testParams);
+        $this->assertEquals($consumer->getOptions(), $testParams);
+        $this->assertEquals($consumer->getCallType(), 'post');
+        $this->assertEquals($consumer->getResponseType(), 'xml');
+        
+        $consumer->reset();
+
+        $this->assertNull($consumer->getUrl());
+        $this->assertEmpty($consumer->getParams());
+        $this->assertEmpty($consumer->getOptions());
+        $this->assertNull($consumer->getCallType());
+        $this->assertNull($consumer->getResponseType());
+    }
 }
