@@ -50,7 +50,11 @@ $result = $apiConsumer->doApiCall();
 
 <div style="width:960px;">
     <pre>
-        <?php print_r($result); ?>
+        <?php foreach ($result as $key => $value): ?>
+        
+            <strong><?php echo $key; ?>:</strong> <?php echo $value; ?><br />
+            
+        <?php endforeach; ?>
     </pre>
 </div>
 
