@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/adamculp/api-consumer.svg?branch=master)](https://travis-ci.org/adamculp/api-consumer)
+[![CircleCI](https://circleci.com/gh/adamculp/api-consumer.svg?style=svg)](https://circleci.com/gh/adamculp/api-consumer)
 
 About
 -----
