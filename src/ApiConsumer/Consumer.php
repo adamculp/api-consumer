@@ -268,4 +268,3 @@ class Consumer
         return $parsedJson;
     }
 }
-
