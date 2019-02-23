@@ -1,7 +1,7 @@
 {
     "name": "adamculp/api-consumer",
-    "description": "Basic API wrapper for dealing with Mashery and other GET based APIs.",
-    "keywords": ["api","wrapper","api wrapper","mashery api"],
+    "description": "Basic API wrapper for dealing with REST APIs.",
+    "keywords": ["rest api"],
     "license": "MIT",
     "authors": [
         {
@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=7.3",
         "lib-curl": "*"
     },
     "require-dev": {
