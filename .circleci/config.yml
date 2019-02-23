@@ -11,7 +11,7 @@ jobs:
           name: Install project dependency
           command: |
             sudo apt-get update
-            sudo apt-get install lib-curl
+            sudo apt-get install curl
       - checkout
       - run:
           name: Install Composer
